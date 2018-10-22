@@ -1,0 +1,14 @@
+{
+  "name": "expresstask",
+  "version": "1.0.0",
+  "description": "express beginning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chaikin Viktor",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

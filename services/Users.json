@@ -1,0 +1,72 @@
+[
+  {
+    "id" : "1",
+    "name" : "Alaa",
+    "surname" : "Hamad",
+    "email" : "alaahamad@gmail.com",
+    "phoneNumber" : "+380 951239201"
+  },
+  {
+    "id" : "2",
+    "name" : "Vera",
+    "surname" : "Mitroshina",
+    "email" : "mitroshina@gmail.com",
+    "phoneNumber" : "+380 951239201"
+  },
+  {
+    "id" : "3",
+    "name" : "Luda",
+    "surname" : "Chaikina",
+    "email" : "luda@outlook.com",
+    "phoneNumber" : "+380 964440506"
+  },
+  {
+    "id" : "4",
+    "name" : "Lera",
+    "surname" : "Borisenko",
+    "email" : "lera@mail.ru",
+    "phoneNumber" : "+380 964440507"
+  },
+  {
+    "id" : "5",
+    "name" : "Vadim",
+    "surname" : "Rozdaibida",
+    "email" : "alator@gmail.com",
+    "phoneNumber" : "+380 96444279"
+  },
+  {
+    "id" : "6",
+    "name" : "Vova",
+    "surname" : "Chaikin",
+    "email" : "vova@outlook.com",
+    "phoneNumber" : "+380 09175971"
+  },
+  {
+    "id" : "7",
+    "name" : "Vlad",
+    "surname" : "Rudenko",
+    "email" : "vlad4ka@mail.ru",
+    "phoneNumber" : "+380 0917591236"
+  },
+  {
+    "id" : "8",
+    "name" : "Viktor",
+    "surname" : "Kopeikin",
+    "email" : "viktor2017@ct-college.net",
+    "phoneNumber" : "380 970373949"
+  },
+  {
+    "id" : "9",
+    "name" : "Kiril",
+    "surname" : "Ruzkov",
+    "email" : "kiril@outlook.com",
+    "phoneNumber" : "380631491402"
+  },
+  {
+    "id" : "10",
+    "name" : "Bogdan",
+    "surname" : "Pelushok",
+    "email" : "pelushok@mail.ru",
+    "phoneNumber" : "380631491405"
+  }
+]
