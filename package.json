@@ -2,14 +2,18 @@
   "name": "expresstask",
   "version": "1.0.0",
   "description": "express beginning",
-  "main": "../index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon services/index.js"
+    "start": "nodemon index.js"
   },
   "author": "Chaikin Viktor",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "npm": "^6.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.5"
   }
 }

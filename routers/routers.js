@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const usersArray = require('../services/Users.json');
-const  createUser = require('../users create/create.js');
+const usersArray = require('../Users.json');
 const users=[];
 
 for(let i=0;i<usersArray.length;i++){
@@ -20,14 +19,8 @@ router.get('/', (req,res,next)=> {
 });
 
 router.get('/:id',(req,res,next)=>{
-    let elem;
-    for(const i of users){
-        if(i.id === req.params.id){
-            elem = i;
-        }
-    }
-
-    if(elem!==undefined){
+    let elem = users.find((elem)=>{return elem.id === req.params.id});
+    if(elem){
         res.json(elem);
         next();
     }
@@ -37,18 +30,15 @@ router.get('/:id',(req,res,next)=>{
     }
 });
 
-router.delete('/DEL/:id',(req,res,next)=>{
-    let counter=0;
-    let found = false;
-     for(const i of users){
-         counter++;
-         if(i.id === req.params.id){
-             found= true;
-             users.splice(counter-1,1);
-         }
-     }
-     if(found === true){
-         res.send(users);
+router.delete('/:id',(req,res,next)=>{
+    let user = users.find((current,index)=>{
+        if(current.id === req.params.id){
+            users.splice(index,1);
+            return current;
+        }
+    });
+     if(user){
+         res.json("User with such params :"+"id = "+req.params.id+" is deleted");
          next();
      }
      else{
@@ -58,23 +48,26 @@ router.delete('/DEL/:id',(req,res,next)=>{
  });
 
 router.post('/', (req,res,next)=>{
-    let user = createUser(users);
+    let user = {
+        id:req.body.id,
+        name: req.body.name,
+        surname: req.body.surname,
+        email:req.body.email,
+        phoneNumber:req.body.phoneNumber
+    };
     users.push(user);
-    res.send(users);
+    res.json(user);
     next();
 });
 
 router.put('/:id',(req,res,next)=>{
-    let counter = 0;
-    let found = false;
-    for(const i of users){
-        counter++;
-        if(i.id === req.params.id){
-            users.splice(counter-1,1);
-            found=true;
+    let user = users.find((current,index)=>{
+        if(current.id === req.params.id){
+            users.splice(index,1);
+            return current;
         }
-    }
-    if(found===true){
+    });
+    if(user){
         let user ={
             "id" : req.body.id,
             "name":req.body.name,
@@ -83,7 +76,7 @@ router.put('/:id',(req,res,next)=>{
             "phoneNumber" : req.body.phoneNumber
         };
         users.push(user);
-        res.send(users);
+        res.json(user);
         next();
     }
     else{
@@ -93,21 +86,13 @@ router.put('/:id',(req,res,next)=>{
 });
 
 router.patch('/:id',(req,res,next)=>{
-    let counter=0;
-    let found = false;
-    for(const i of users){
-        counter++;
-        if(i.id === req.params.id){
-            found= true;
-            i.name = (req.body.name !== undefined)?req.body.name : i.name;
-            i.surname = (req.body.surname !== undefined)?req.body.surname : i.surname;
-            i.email = (req.body.email !== undefined)?req.body.email : i.email;
-            i.phoneNumber = (req.body.phoneNumber !== undefined)?req.body.phoneNumber : i.phoneNumber;
-
-        }
-    }
-    if(found === true){
-        res.send(users);
+    let user = users.find((user)=>{return user.id === req.params.id});
+    if(user){
+        user.name = (req.body.name)?req.body.name : user.name;
+        user.surname = (req.body.surname)?req.body.surname : user.surname;
+        user.email = (req.body.email)?req.body.email : user.email;
+        user.phoneNumber = (req.body.phoneNumber)?req.body.phoneNumber : user.phoneNumber;
+        res.json(user);
         next();
     }
     else{
