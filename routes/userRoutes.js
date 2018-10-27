@@ -1,24 +1,24 @@
 const express = require('express');
-const router = express.Router();
+const userRoute = express.Router();
 const usersArray = require('../Users.json');
 const users=[];
 
 for(let i=0;i<usersArray.length;i++){
     users.push(usersArray[i]);
 }
-router.use('/',(req,res,next)=>{
+userRoute.use('/',(req,res,next)=>{
     console.log("Time : "+Date.now());
     console.log("Url : "+req.originalUrl);
     console.log("Method : "+req.method);
     next();
 });
 
-router.get('/', (req,res,next)=> {
+userRoute.get('/', (req,res,next)=> {
     res.json(users);
     next();
 });
 
-router.get('/:id',(req,res,next)=>{
+userRoute.get('/:id',(req,res,next)=>{
     let elem = users.find((elem)=>{return elem.id === req.params.id});
     if(elem){
         res.json(elem);
@@ -30,7 +30,7 @@ router.get('/:id',(req,res,next)=>{
     }
 });
 
-router.delete('/:id',(req,res,next)=>{
+userRoute.delete('/:id',(req,res,next)=>{
     let user = users.find((current,index)=>{
         if(current.id === req.params.id){
             users.splice(index,1);
@@ -47,7 +47,7 @@ router.delete('/:id',(req,res,next)=>{
      }
  });
 
-router.post('/', (req,res,next)=>{
+userRoute.post('/', (req,res,next)=>{
     let user = {
         id:req.body.id,
         name: req.body.name,
@@ -60,7 +60,7 @@ router.post('/', (req,res,next)=>{
     next();
 });
 
-router.put('/:id',(req,res,next)=>{
+userRoute.put('/:id',(req,res,next)=>{
     let user = users.find((current,index)=>{
         if(current.id === req.params.id){
             users.splice(index,1);
@@ -85,7 +85,7 @@ router.put('/:id',(req,res,next)=>{
     }
 });
 
-router.patch('/:id',(req,res,next)=>{
+userRoute.patch('/:id',(req,res,next)=>{
     let user = users.find((user)=>{return user.id === req.params.id});
     if(user){
         user.name = (req.body.name)?req.body.name : user.name;
@@ -100,4 +100,4 @@ router.patch('/:id',(req,res,next)=>{
         next(error);
     }
 });
-module.exports = router;
+module.exports = userRoute;

@@ -1,16 +1,18 @@
 const express = require('express');
 const app = express();
-const routers = require('./routers/routers.js');
+const routes = require('./routes/userRoutes.js');
+const adminRoutes = require('./routes/adminRoutes.js');
 app.use(express.json());
 
-app.use('/users',routers);
+app.use('/system/users',routes);
+app.use('/admin',adminRoutes);
 
-app.use((req,res,next)=>{
+app.use('/',(req,res,next)=>{
     const error = new Error("Wrong URL");
     error.status = 404;
     next(error);
 });
-app.use((error,req,res)=>{
+app.use('/',(error,req,res)=>{
     res.status(error.status || 500);
     res.json({
         error:{
